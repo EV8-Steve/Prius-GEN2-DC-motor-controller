@@ -7,7 +7,6 @@
 // S.Pilcher EV8
 // (tie inverter pins GSDN(14) & MSDN(25) to +12v to enable powerstages)
 
-//Steves simple Coding standard
 //INPUTS & OUTPUTS IN UPPERCASE
 //varialbles in lowercase
 
@@ -455,15 +454,15 @@ void Forward()
   
   if (brake_state == HIGH) pwm_duty =0; // Brake switch kills pwm output
   
- // if (bms_state == LOW)  
-//          { pwm_duty = 0;
-  //         Serial1.write("status.txt=");
-    //       Serial1.write(0x22);
-      //     Serial1.print ("!!! BMS ERROR !!!"); 
-        //   Serial1.write(0x22);
-          // Serial1.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
-     //      Serial1.write(0xff);
-     //      Serial1.write(0xff); }
+ if (bms_state == LOW)  
+          { pwm_duty = 0;
+          Serial1.write("status.txt=");
+          Serial1.write(0x22);
+          Serial1.print ("!!! BMS ERROR !!!"); 
+          Serial1.write(0x22);
+          Serial1.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
+          Serial1.write(0xff);
+          Serial1.write(0xff); }
 
     
   analogWrite(PWM_4, pwm_duty);
